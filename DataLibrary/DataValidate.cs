@@ -16,8 +16,8 @@ public static class DataValidate
         bool validData = true;
         if (DateTime.TryParseExact(dataField[0], "s", provider, DateTimeStyles.None, out DateTime departureDate) && DateTime.TryParseExact(dataField[1], "s", provider, DateTimeStyles.None, out DateTime returnDate))
         {
-            journey.Departure = departureDate;
-            journey.Return = returnDate;
+            journey.DepartureDate = departureDate;
+            journey.ReturnDate = returnDate;
         } else 
             validData = false;
         if (double.TryParse(dataField[6], NumberStyles.Any, provider, out double distance) && double.TryParse(dataField[7], NumberStyles.Any, provider, out double duration))
@@ -32,12 +32,10 @@ public static class DataValidate
         }
         else
             validData = false;
-        if (dataField[2].Length == 3 && dataField[4].Length == 3 && dataField[3].Length != 0 && dataField[5].Length != 0)
+        if (dataField[2].Length == 3 && dataField[4].Length == 3)
         {
             journey.DepartureStationId = dataField[2];
-            journey.DepartureStationName = dataField[3];
             journey.ReturnStationId = dataField[4];
-            journey.ReturnStationName = dataField[5];
         }
         else
             validData = false;

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using Microsoft.VisualBasic.FileIO;
 
 namespace DataLibrary;
-public class DataMove
+public class DataRead
 {
     readonly string path;
     public int InvalidItems { get; set; } = 0;
@@ -95,10 +95,9 @@ public class DataMove
             dt.Rows.Add(values);
         }
         return dt;
-
     }
 
-    public DataMove(string pathToFolder)
+    public DataRead(string pathToFolder)
     {
            path = pathToFolder;
     }
