@@ -14,10 +14,9 @@ public static class DataValidate
     {
         journey = new JourneyFormat();
         bool validData = true;
-        if (DateTime.TryParseExact(dataField[0], "s", provider, DateTimeStyles.None, out DateTime departureDate) && DateTime.TryParseExact(dataField[1], "s", provider, DateTimeStyles.None, out DateTime returnDate))
+        if (DateTime.TryParseExact(dataField[0], "s", provider, DateTimeStyles.None, out DateTime departureDate))
         {
-            journey.DepartureDate = departureDate;
-            journey.ReturnDate = returnDate;
+            journey.DepartureDate = departureDate.ToString("yyyy-MM-dd");
         } else 
             validData = false;
         if (double.TryParse(dataField[6], NumberStyles.Any, provider, out double distance) && double.TryParse(dataField[7], NumberStyles.Any, provider, out double duration))
@@ -48,8 +47,8 @@ public static class DataValidate
         station = new();
         bool validData = true;
 
-        if (int.TryParse(dataField[0], out int validId))
-            station.Id = validId;
+        if (dataField[1] != "" && dataField[1].Length == 3)
+            station.StationId = dataField[1];
         else
             validData = false;
 
@@ -60,25 +59,18 @@ public static class DataValidate
 
         if (double.TryParse(dataField[11], NumberStyles.Any, provider, out double validY) && double.TryParse(dataField[12], NumberStyles.Any, provider, out double validX))
         {
-            station.Y = validY;
-            station.X = validX;
+            station.Altitude = validY;
+            station.Latitude = validX;
         } else 
             validData = false;
 
         if (validData)
         {
-            station.StationId = dataField[1] == "" ? null : dataField[1];
-            station.Nimi = dataField[2] == "" ? null : dataField[2];
-            station.Namn = dataField[3] == "" ? null : dataField[3];
-            station.Name = dataField[4] == "" ? null : dataField[4];
-            station.Osoite = dataField[5] == "" ? null : dataField[5];
-            station.Address = dataField[6] == "" ? null : dataField[6];
-            station.Kaupunki = dataField[7] == "" ? null : dataField[7];
-            station.Stad = dataField[8] == "" ? null : dataField[8];
+            station.Name = dataField[2] == "" ? null : dataField[2];
+            station.Address = dataField[5] == "" ? null : dataField[5];
+            station.City = dataField[7] == "" ? null : dataField[7];
             station.Operator = dataField[9] == "" ? null : dataField[9];
-
         }
         return validData;
     }
-
 }

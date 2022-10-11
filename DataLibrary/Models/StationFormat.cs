@@ -8,21 +8,12 @@ namespace DataLibrary;
 
 public class StationFormat
 {
-    public int Id { get; set; }
     public string? StationId { get; set; }
-    public string? Nimi { get; set; }
-    public string? Namn { get; set; }
     public string? Name { get; set; }
-
-    public string? Osoite { get; set; }
     public string? Address { get; set; }
-
-    public string? Kaupunki { get; set; }
-    public string? Stad { get; set; }
-
+    public string? City { get; set; }
     public string? Operator { get; set; }
     public int Capacity { get; set; }
-
-    public double X { get; set; }
-    public double Y { get; set; }
+    public double Latitude { get; set; }
+    public double Altitude { get; set; }
 }

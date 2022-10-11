@@ -94,6 +94,7 @@ public class DataRead
             }
             dt.Rows.Add(values);
         }
+        items.Clear();
         return dt;
     }
 

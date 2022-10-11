@@ -8,8 +8,7 @@ namespace DataLibrary;
 
 public class JourneyFormat
 {
-    public DateTime DepartureDate { get; set; }
-    public DateTime ReturnDate { get; set; }
+    public string? DepartureDate { get; set; }
     public string? DepartureStationId { get; set; }
     public string?  ReturnStationId { get; set; }
 
