@@ -50,6 +50,17 @@ public class DataToDb
         command.ExecuteNonQuery();
         _connection.Close();
     }
+    public void CreateProcedures()
+    {
+        _connection.Open();
+        SqlCommand command = _connection.CreateCommand();
+        command.CommandType = CommandType.Text;
+        command.CommandText = SqlCommandStrings.CreateGetStationsProcedure;
+        command.ExecuteNonQuery();
+        command.CommandText = SqlCommandStrings.CreateGetJourneysProcedure;
+        command.ExecuteNonQuery();
+        command.CommandText = SqlCommandStrings.CreateGetStationNameProcedure;
+    }
     public DataToDb(string connectionString, DataTable journeys, DataTable stations)
     {
         _connection = new SqlConnection(connectionString);

@@ -16,7 +16,7 @@ public static class DataValidate
         bool validData = true;
         if (DateTime.TryParseExact(dataField[0], "s", provider, DateTimeStyles.None, out DateTime departureDate))
         {
-            journey.DepartureDate = departureDate.ToString("yyyy-MM-dd");
+            journey.Date = departureDate;
         } else 
             validData = false;
         if (double.TryParse(dataField[6], NumberStyles.Any, provider, out double distance) && double.TryParse(dataField[7], NumberStyles.Any, provider, out double duration))

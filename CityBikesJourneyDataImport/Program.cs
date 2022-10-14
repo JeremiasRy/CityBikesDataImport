@@ -16,5 +16,8 @@ Console.WriteLine("Data moved");
 Console.WriteLine("Creating indexes");
 dataToDb.CreateIndexes();
 Console.WriteLine("Done");
+Console.WriteLine("Creating stored procedures");
+dataToDb.CreateProcedures();
+Console.WriteLine("Finished!! Enjoy your fresh database! (Any key to exit)");
 Console.ReadKey();
 

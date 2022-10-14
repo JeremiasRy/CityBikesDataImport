@@ -16,8 +16,8 @@ public class DataRead
     public DataTable StationsDataTable { get; set; } = new();
     public void ReadData()
     {
-        List<JourneyFormat> _journeys = new List<JourneyFormat>();
-        List<StationFormat> _stations = new List<StationFormat>();
+        List<JourneyFormat> _journeys = new();
+        List<StationFormat> _stations = new();
         string[] _fileNames = Directory.GetFiles(path);
 
         Console.WriteLine("Found {0} file{1}:", _fileNames.Length, _fileNames.Length > 1 ? "s" : "");
@@ -70,7 +70,7 @@ public class DataRead
             }
         }
         Console.WriteLine("Creating datatables..");
-        JourneysDataTable = ListToDataTable(_journeys);
+        JourneysDataTable = ListToDataTable(_journeys.OrderBy(journey => journey.Date).ToList());
         StationsDataTable = ListToDataTable(_stations);
         Console.WriteLine("Journeys: {0}, Stations: {1}, Invalid entries: {2}", JourneysDataTable.Rows.Count, StationsDataTable.Rows.Count, InvalidItems);
     }
@@ -95,6 +95,8 @@ public class DataRead
             dt.Rows.Add(values);
         }
         items.Clear();
+        if (dt.TableName == "JourneyFormat")
+            dt.Columns.Remove("Date");
         return dt;
     }
 
