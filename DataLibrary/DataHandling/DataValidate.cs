@@ -68,7 +68,7 @@ public static class DataValidate
         {
             station.Name = dataField[2] == "" ? null : dataField[2];
             station.Address = dataField[5] == "" ? null : dataField[5];
-            station.City = dataField[7] == "" ? null : dataField[7];
+            station.City = dataField[7] == "" ? "Helsinki" : dataField[7];
             station.Operator = dataField[9] == "" ? null : dataField[9];
         }
         return validData;
