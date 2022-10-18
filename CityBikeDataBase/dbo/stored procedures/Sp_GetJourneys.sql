@@ -23,6 +23,7 @@
 											CASE WHEN @OrderDirection = 'A' THEN
 												CASE WHEN @OrderBy = 'Distance' THEN Distance
 													 WHEN @OrderBy = 'Duration' THEN Duration
+													 WHEN @OrderBy = 'Date' THEN Id
 													 WHEN @OrderBy IS NULL THEN Id
 													 END 
 												END ASC,
@@ -30,6 +31,7 @@
 												CASE WHEN @OrderBy = 'Distance' THEN Distance
 													 WHEN @OrderBy = 'Duration' THEN Duration
 													 WHEN @OrderBy = 'Date' THEN Id
+													 WHEN @OrderBy IS NULL THEN Id
 													 END 
 												END DESC,
 											CASE WHEN @OrderDirection IS NULL THEN Id END) AS RowNum, *

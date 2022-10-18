@@ -69,8 +69,12 @@ public class DataRead
                 }
             }
         }
+        Console.WriteLine("Removing duplicate values");
+        var removedDuplicates = _journeys.GroupBy(journey => new { journey.Date, journey.DepartureStationId, journey.ReturnStationId, journey.Duration, journey.Distance }).Select(group => group.First()).ToList();
+        Console.WriteLine($"Removed {_journeys.Count - removedDuplicates.Count} duplicate values");
+        _journeys.Clear();
         Console.WriteLine("Creating datatables..");
-        JourneysDataTable = ListToDataTable(_journeys.OrderBy(journey => journey.Date).ToList());
+        JourneysDataTable = ListToDataTable(removedDuplicates.OrderBy(journey => journey.Date).ToList());
         StationsDataTable = ListToDataTable(_stations);
         Console.WriteLine("Journeys: {0}, Stations: {1}, Invalid entries: {2}", JourneysDataTable.Rows.Count, StationsDataTable.Rows.Count, InvalidItems);
     }
