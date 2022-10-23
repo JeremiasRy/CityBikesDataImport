@@ -1,13 +1,13 @@
 ﻿    -- =============================================
 -- Author:		Jeremias Ryttäri
 -- Create date: 14.10.2022
--- Description:	Get journeys with or without parameters. Executing without any parameters returns first 100 items.
+-- Description:	Get journeys with or without parameters. Executing without any parameters returns first 50 items.
 -- =============================================
 
 	CREATE PROCEDURE [dbo].[Sp_GetJourneys]
 	    @PageIndex int = 1,
-	    @PageSize int = 100,
-	    @Date date = null,
+	    @PageSize int = 50,
+	    @Month int = null,
 	    @DepartureStationId char(3) = NULL,
 	    @ReturnStationId char(3) = NULL,
 	    @Distance int = NULL,
@@ -36,7 +36,7 @@
 												END DESC,
 											CASE WHEN @OrderDirection IS NULL THEN Id END) AS RowNum, *
           FROM      journeys
-          WHERE     (1=(CASE when @Date is null THEN 1 else 0 end) or DepartureDate = @Date) and
+          WHERE     (1=(CASE when @Month is null THEN 1 else 0 end) or MONTH(DepartureDate) = @Month) and
 					(1=(CASE when @DepartureStationId is null THEN 1 else 0 end) or @DepartureStationId = DepartureStationId) and
 					(1=(CASE when @ReturnStationId is null THEN 1 else 0 end) or @ReturnStationId = ReturnStationId) and
 					(1=(CASE when @Distance is null THEN 1 else 0 end) or CASE 

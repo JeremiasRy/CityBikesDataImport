@@ -69,5 +69,8 @@
     <Build Include="dbo\stored procedures\Sp_GetStationStatistics.sql" />
     <Build Include="dbo\stored procedures\Sp_Top5DepToRtn.sql" />
     <Build Include="dbo\stored procedures\Sp_Top5RtnToDep.sql" />
+    <Build Include="dbo\stored procedures\Sp_InsertJourney.sql" />
+    <Build Include="dbo\stored procedures\Sp_InsertStation.sql" />
+    <Build Include="dbo\stored procedures\Sp_UpdateStation.sql" />
   </ItemGroup>
 </Project>
