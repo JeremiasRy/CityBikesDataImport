@@ -72,5 +72,7 @@
     <Build Include="dbo\stored procedures\Sp_InsertJourney.sql" />
     <Build Include="dbo\stored procedures\Sp_InsertStation.sql" />
     <Build Include="dbo\stored procedures\Sp_UpdateStation.sql" />
+    <Build Include="dbo\stored procedures\Sp_DeleteJourney.sql" />
+    <Build Include="dbo\stored procedures\Sp_DeleteStation.sql" />
   </ItemGroup>
 </Project>
